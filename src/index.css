@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 30 33% 96%;
+    --foreground: 0 0% 10%;
+
+    --card: 30 25% 93%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 30 33% 96%;
+    --popover-foreground: 0 0% 10%;
+
+    --primary: 0 0% 10%;
+    --primary-foreground: 30 33% 96%;
+
+    --secondary: 30 25% 90%;
+    --secondary-foreground: 0 0% 10%;
+
+    --muted: 30 15% 88%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 4 78% 56%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 30 15% 85%;
+    --input: 30 15% 85%;
+    --ring: 4 78% 56%;
+
+    --radius: 0rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* SpiceFusion custom tokens */
+    --sf-red: 4 78% 56%;
+    --sf-cream: 30 33% 96%;
+    --sf-dark: 0 0% 10%;
+    --sf-warm-gray: 30 10% 70%;
+  }
+
+  .dark {
+    --background: 0 0% 10%;
+    --foreground: 30 33% 96%;
+    --card: 0 0% 14%;
+    --card-foreground: 30 33% 96%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 30 33% 96%;
+    --primary: 30 33% 96%;
+    --primary-foreground: 0 0% 10%;
+    --secondary: 0 0% 18%;
+    --secondary-foreground: 30 33% 96%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 30 10% 60%;
+    --accent: 4 78% 56%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 4 78% 56%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold uppercase tracking-tight;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16;
+  }
+
+  .text-accent-red {
+    @apply text-accent;
+  }
+
+  .btn-fill-hover {
+    @apply relative overflow-hidden;
+  }
+
+  .btn-fill-hover::before {
+    content: "";
+    @apply absolute inset-0 z-0;
+    background: hsl(var(--accent));
+    transform: translateX(-101%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .btn-fill-hover:hover::before {
+    transform: translateX(0);
+  }
+
+  .btn-fill-hover > * {
+    @apply relative z-10;
+  }
+
+  .btn-fill-hover span,
+  .btn-fill-hover-text {
+    @apply relative z-10;
+  }
+
+  .bg-motif {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M0 40 Q20 20 40 40 Q60 20 80 40' fill='none' stroke='%23d4c5b0' stroke-width='0.5' opacity='0.3'/%3E%3Cpath d='M0 60 Q20 40 40 60 Q60 40 80 60' fill='none' stroke='%23d4c5b0' stroke-width='0.5' opacity='0.3'/%3E%3Cpath d='M0 20 Q20 0 40 20 Q60 0 80 20' fill='none' stroke='%23d4c5b0' stroke-width='0.5' opacity='0.3'/%3E%3C/svg%3E");
+  }
+}
+
+@layer utilities {
+  .clip-reveal {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
